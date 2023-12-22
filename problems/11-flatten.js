@@ -27,12 +27,11 @@ function flatten(arr, num = 0, newArr = []) {
         newArr.unshift(arr[num].shift())
         return flatten(arr, num, newArr)
       } else {
-        for (let j = 0; j < arr[i].length; j++) {
-          console.log(arr[i][j])
+        return flatten(arr[num][i], num, newArr)
 
         }
-        return flatten(arr, num, newArr)
-      }
+        
+      
     }
   }
 
