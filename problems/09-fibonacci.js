@@ -12,17 +12,38 @@ examples below if you're unsure where to start!
 
 Examples:
 
-fibonacci(1); // 1
+fibonacci(1); // 0
 fibonacci(2); // 1
-fibonacci(3); // 2
-fibonacci(4); // 3
+fibonacci(3); // 1
+fibonacci(4); // 2
+fibonacci(5); // 3
 fibonacci(10); // 55
 ***********************************************************************/
 
-function fibonacci(n) {
-  // Your code here 
+function fibonacci(n, sum = [0,1]) {
+  if (n === 0) {
+    return sum[1];
+  }
+
+  if (n === 1) {
+    return sum[1]
+  }
+
+  let prev = sum[0];
+  let next = sum[1];
+  sum.push(prev + next);
+  sum.shift();
+
+  return fibonacci(n - 1, sum)
 }
-  
+
+console.log(fibonacci(1)); // 1
+console.log(fibonacci(2)); // 1
+console.log(fibonacci(3)); // 2
+console.log(fibonacci(4)); // 3
+console.log(fibonacci(5)); // 5
+console.log(fibonacci(6)); // 8
+// fibonacci(10); // 55
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = fibonacci;
-  
