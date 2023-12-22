@@ -12,10 +12,36 @@ flatten([1, 2]); // [1, 2]
 flatten([1, [2, [3]]]); // [1, 2, 3]
 ***********************************************************************/
 
-function flatten(arr) {
-  // Your code here 
+function flatten(arr, num = 0, newArr = []) {
+  if (arr.length === 0) {
+    return newArr;
+  }
+  debugger
+  if (typeof arr[num] === 'number') {
+    newArr.unshift(arr.shift());
+  }
+
+  if (Array.isArray(arr[num])) {
+    for (let i = num; i < arr[num].length; i++) {
+      if (typeof arr[num][i] === 'number') {
+        newArr.unshift(arr[num].shift())
+        return flatten(arr, num, newArr)
+      } else {
+        for (let j = 0; j < arr[i].length; j++) {
+          console.log(arr[i][j])
+
+        }
+        return flatten(arr, num, newArr)
+      }
+    }
+  }
+
+  return flatten(arr, num, newArr)
+
 }
-  
+debugger
+// console.log(flatten([1, 2]))
+console.log(flatten([1, [2, [3]]])); // [1, 2, 3]
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = flatten;
-  
